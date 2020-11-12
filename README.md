@@ -1,0 +1,1 @@
+Up Next is your solution to that eternal question... who's up next?  Create a list of participants and Up Next will randomly draw a name from the list, dynamically updating the list to track who's gone and who hasn't.
