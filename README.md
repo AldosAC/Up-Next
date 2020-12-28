@@ -8,10 +8,10 @@ At the moment, the app is in its conceptual and planning stage, as I progress th
 
 Planned tech stack:
 - React
-- Express
-- MongoDB
+- AWS API Gateway
+- AWS Lambda
+- DynamoDB
 - Jest / Enzyme
 
 Stretch Goals:
 - React Native
-- Serverless architecture
