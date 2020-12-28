@@ -8,6 +8,7 @@ At the moment, the app is in its conceptual and planning stage, as I progress th
 
 Planned tech stack:
 - React
+- AWS Amplify
 - AWS API Gateway
 - AWS Lambda
 - DynamoDB
