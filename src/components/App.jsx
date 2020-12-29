@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 
 const App = (props) => {
   const [session, setSession] = useState(null);
 
   if (!session) {
     return (
-      <div>
+      <div id="app">
         Please enter your session id:
       </div>
     )
   } else {
     return (
-      <div>
+      <div id="app">
         React loaded successfully!
       </div>
     )
   }
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
