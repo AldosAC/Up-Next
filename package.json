@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "",
+    "build-dev": "",
+    "start": ""
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/AldosAC/Up-Next/issues"
   },
-  "homepage": "https://github.com/AldosAC/Up-Next#readme"
+  "homepage": "https://github.com/AldosAC/Up-Next#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "webpack": "^5.11.1",
+    "webpack-merge": "^5.7.3",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2"
+  }
 }
