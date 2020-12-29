@@ -1,4 +1,4 @@
-import App from "../../src/components/App.jsx";
+import App from "../src/components/App.jsx";
 import { useState as useStateMock } from "react";
 
 jest.mock('react', () => ({

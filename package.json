@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack --config webpack.prod.js",
-    "build-dev": "webpack --config webpack.dev.js",
+    "build-dev": "webpack --config webpack.dev.js --watch",
     "start": "live-server"
   },
   "repository": {
@@ -22,7 +22,8 @@
   "homepage": "https://github.com/AldosAC/Up-Next#readme",
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
