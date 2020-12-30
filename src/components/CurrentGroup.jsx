@@ -1,7 +1,7 @@
 import React from "react";
 
 const CurrentGroup = (props) => {
-  const { group } = props;
+  let { group } = props;
 
   return (
     <div className="current-group" >

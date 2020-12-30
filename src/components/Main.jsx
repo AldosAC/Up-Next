@@ -13,25 +13,24 @@ const Main = (props) => {
 
   const [ groups, setGroups ] = useState(sampleGroups);
   const [ currentGroup, setCurrentGroup ] = useState(null);
-
-  let pendingGroups = groups.slice();
+  const [ pendingGroups, setPendingGroups ] = useState(groups);
 
   const addGroup = (name) => {
     let newGroup = new Group(name);
 
-    pendingGroups.push(newGroup);
-    setGroups([...groups, newGroup]);
+    setPendingGroups(newGroup);
+    setGroups(newGroup);
   }
 
   const upNextClickHandler = () => {
-    const index = Math.floor(Math.random() * groups.length);
+    const index = Math.floor(Math.random() * pendingGroups.length);
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
-    console.log(`Pending Groups: ${pendingGroups}`)
+    if(pendingGroups.length > 0) {
+      let oldPendingGroups = pendingGroups.slice();
+      const queuedGroup = oldPendingGroups.splice(index, 1)[0];
 
-    if(pendingGroups.length > 1) {
-      let queuedGroup = pendingGroups.splice(index, 1)
-
+      setPendingGroups(oldPendingGroups);
       setCurrentGroup(queuedGroup);
     } else {
       setCurrentGroup(finishedPlaceholder);
