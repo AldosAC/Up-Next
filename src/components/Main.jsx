@@ -27,10 +27,13 @@ const Main = (props) => {
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
     if(pendingGroups.length > 0) {
-      let oldPendingGroups = pendingGroups.slice();
-      const queuedGroup = oldPendingGroups.splice(index, 1)[0];
+      let newPendingGroups = pendingGroups.slice();
+      let newGroups = groups.slice();
+      const queuedGroup = newPendingGroups.splice(index, 1)[0];
+      newGroups[groups.indexOf(queuedGroup)].hasGone = true;
 
-      setPendingGroups(oldPendingGroups);
+      setPendingGroups(newPendingGroups);
+      setGroups(newGroups);
       setCurrentGroup(queuedGroup);
     } else {
       setCurrentGroup(finishedPlaceholder);
