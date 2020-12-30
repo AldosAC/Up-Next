@@ -38,7 +38,7 @@ const Session = (props) => {
     )
   } else {
     return (
-      <div>
+      <div className="session">
         Do you have a session ID?
         <button className="btn-existing-session" onClick={existingSessionHandler}>
           Yes

@@ -6,7 +6,7 @@ jest.mock('react', () => ({
   useState: jest.fn()
 }));
 
-describe("GroupsListItem", () => {
+describe("Groups", () => {
   const setStateMock = jest.fn();
   const sampleGroups = [
     {
