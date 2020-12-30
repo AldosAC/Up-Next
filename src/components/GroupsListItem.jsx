@@ -4,7 +4,7 @@ const GroupsListItem = (props) => {
   const { group } = props;
 
   return (
-    <li>
+    <li className="groups-list-item" >
       {group.name}
     </li>
   )
