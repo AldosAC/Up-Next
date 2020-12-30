@@ -23,7 +23,7 @@ const Session = (props) => {
 
   if (hasSession) {
     return (
-      <form className="session">
+      <form className="session has-session">
         <span>Enter your 4 digit session ID</span>
         <input 
           className="session-input" 
@@ -38,7 +38,7 @@ const Session = (props) => {
     )
   } else {
     return (
-      <div className="session">
+      <div className="session no-session">
         Do you have a session ID?
         <button className="btn-existing-session" onClick={existingSessionHandler}>
           Yes
