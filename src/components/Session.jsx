@@ -24,24 +24,27 @@ const Session = (props) => {
   if (hasSession) {
     return (
       <form className="session">
-        <span>Enter your 4 digit session ID.</span>
+        <span>Enter your 4 digit session ID</span>
         <input 
           className="session-input" 
           value={inputValue} 
           onChange={onChangeHandler}
         >
         </input>
-        <button onClick={submitSessionHandler} >Continue</button>
-      </form> 
+        <button className="btn-submit-session" onClick={submitSessionHandler} >
+          Submit
+        </button>
+      </form>
     )
   } else {
     return (
       <div>
-        <button className="existing-session-btn" onClick={existingSessionHandler}>
-          Click here if you have a session id
+        Do you have a session ID?
+        <button className="btn-existing-session" onClick={existingSessionHandler}>
+          Yes
         </button>
-        <button className="new-session-btn" onClick={newSessionHandler}>
-          Click here to continue with a random session id
+        <button className="btn-new-session" onClick={newSessionHandler}>
+          No
         </button>
       </div>
     );
