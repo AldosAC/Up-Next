@@ -17,13 +17,13 @@ describe("App", () => {
     useStateMock.mockImplementation( () => [null, setStateMock])
     const wrapper = shallow(<App />);
     
-    expect(wrapper.is("#app")).toBe(true);
+    expect(wrapper.is(".main-container")).toBe(true);
   });
 
   it("should render main app if session id exists", () => {
     useStateMock.mockImplementation( () => ["XKCL", setStateMock])
     const wrapper = shallow(<App />);
 
-    expect(wrapper.is("#app")).toBe(true);
+    expect(wrapper.is(".main-container")).toBe(true);
   });
 });

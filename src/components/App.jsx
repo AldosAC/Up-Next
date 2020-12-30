@@ -6,16 +6,14 @@ const App = (props) => {
 
   if (!session) {
     return (
-      <div id="app">
+      <div className="main-container">
         Please enter your session id:
         <Session setSession={setSession} />
       </div>
     )
   } else {
-    console.log(`Session ID: ${session}`);
-
     return (
-      <div id="app">
+      <div className="main-container">
         React loaded successfully!
       </div>
     )
