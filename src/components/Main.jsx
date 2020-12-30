@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import Groups from "./Groups.jsx";
 import CurrentGroup from "./CurrentGroup.jsx";
 
+const sampleGroups = [
+  { name: "group 1", hasGone: false },
+  { name: "group 2", hasGone: false }
+];
+
 const Main = (props) => {
   const { session } = props;
 
-  const [groups, setGroups] = useState([{ name: "group 1"}, { name: "group 2" }]);
+  const [groups, setGroups] = useState(sampleGroups);
   const [ currentGroup, setCurrentGroup] = useState(null);
 
   const upNextClickHandler = () => {

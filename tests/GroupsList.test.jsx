@@ -2,12 +2,8 @@ import GroupsList from "../src/components/GroupsList.jsx";
 
 describe("GroupsList", () => {
   const sampleGroups = [
-    {
-      name: "Sample Group 1"
-    },
-    {
-      name: "Sample Group 2"
-    }
+    { name: "group 1", hasGone: false },
+    { name: "group 2", hasGone: false }
   ];
 
   it("should render a list", () => {
