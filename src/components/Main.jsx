@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Groups from "./Groups.jsx";
 import CurrentGroup from "./CurrentGroup.jsx";
+import Group from "../models/Group.js";
 
 const sampleGroups = [
   { name: "group 1", hasGone: false },
@@ -10,14 +11,30 @@ const sampleGroups = [
 const Main = (props) => {
   const { session } = props;
 
-  const [groups, setGroups] = useState(sampleGroups);
-  const [ currentGroup, setCurrentGroup] = useState(null);
+  const [ groups, setGroups ] = useState(sampleGroups);
+  const [ currentGroup, setCurrentGroup ] = useState(null);
+
+  let pendingGroups = groups.slice();
+
+  const addGroup = (name) => {
+    let newGroup = new Group(name);
+
+    pendingGroups.push(newGroup);
+    setGroups([...groups, newGroup]);
+  }
 
   const upNextClickHandler = () => {
     const index = Math.floor(Math.random() * groups.length);
+    const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
-    if(groups.length > 1) {
-      setCurrentGroup(groups[index]);
+    console.log(`Pending Groups: ${pendingGroups}`)
+
+    if(pendingGroups.length > 1) {
+      let queuedGroup = pendingGroups.splice(index, 1)
+
+      setCurrentGroup(queuedGroup);
+    } else {
+      setCurrentGroup(finishedPlaceholder);
     }
   }
 

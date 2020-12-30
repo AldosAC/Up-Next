@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const AddGroups = (props) => {
   const { setGroups } = props;
 
-  const [groupName, setGroupName] = useState("");
+  const [ groupName, setGroupName ] = useState("");
 
   const groupNameInputHandler = ({ target: { value } }) => {
     setGroupName(value)

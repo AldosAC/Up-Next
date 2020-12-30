@@ -3,7 +3,7 @@ import Session from "./Session.jsx";
 import Main from "./Main.jsx";
 
 const App = (props) => {
-  const [session, setSession] = useState(null);
+  const [ session, setSession ] = useState(null);
   
 
   if (!session) {
