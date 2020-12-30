@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GroupsList from "./GroupsList.jsx";
 
 const Groups = (props) => {
-  const [groups, setGroups] = useState([{ name: "group 1"}, { name: "group 2" }]);
+  const { groups, setGroups } = props;
 
   return (
     <div className="groups-container">
