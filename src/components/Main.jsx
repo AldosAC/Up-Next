@@ -18,8 +18,8 @@ const Main = (props) => {
   const addGroup = (name) => {
     let newGroup = new Group(name);
 
-    setPendingGroups(newGroup);
-    setGroups(newGroup);
+    setPendingGroups([...pendingGroups, newGroup]);
+    setGroups([...groups, newGroup]);
   }
 
   const upNextClickHandler = () => {
@@ -40,36 +40,24 @@ const Main = (props) => {
     }
   }
 
-  if (currentGroup) {
-    return (
-      <div className="main">
-        <div className="main-session-id">
-          Session ID: {session}
-        </div>
-        <CurrentGroup group={currentGroup} />
-        <div className="up-next-container">
-          <button className="btn-up-next" onClick={upNextClickHandler} >
-            Up Next!
-          </button>
-        </div>
-        <Groups groups={groups} setGroups={setGroups} />
+  const checkCurrentGroup = () => (
+    currentGroup ? <CurrentGroup group={currentGroup} /> : null
+  )
+
+  return (
+    <div className="main">
+      <div className="main-session-id">
+        Session ID: {session}
       </div>
-    )
-  } else {
-    return (
-      <div className="main">
-        <div className="main-session-id">
-          Session ID: {session}
-        </div>
-        <div className="up-next-container">
-          <button className="btn-up-next" onClick={upNextClickHandler} >
-            Up Next!
-          </button>
-        </div>
-        <Groups groups={groups} setGroups={setGroups} />
+      {checkCurrentGroup()}
+      <div className="up-next-container">
+        <button className="btn-up-next" onClick={upNextClickHandler} >
+          Up Next!
+        </button>
       </div>
-    )
-  }
+      <Groups groups={groups} addGroup={addGroup} />
+    </div>
+  )
 }
 
 export default Main;
