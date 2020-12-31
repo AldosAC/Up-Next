@@ -15,11 +15,16 @@ const Main = (props) => {
   const [ currentGroup, setCurrentGroup ] = useState(null);
   const [ pendingGroups, setPendingGroups ] = useState(groups);
 
-  const addGroup = (name) => {
-    let newGroup = new Group(name);
+  const addGroup = (input) => {
+    let toBeAdded;
+    if (typeof input === string) {
+      toBeAdded = new Group(input);
+    } else if (typeof input === array) {
+      toBeAdded = input.map((item) => new Group(item));
+    }
 
-    setPendingGroups([...pendingGroups, newGroup]);
-    setGroups([...groups, newGroup]);
+    setPendingGroups([...pendingGroups, toBeAdded]);
+    setGroups([...groups, toBeAdded]);
   }
 
   const upNextClickHandler = () => {
