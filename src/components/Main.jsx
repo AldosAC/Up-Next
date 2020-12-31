@@ -18,15 +18,10 @@ const Main = (props) => {
   const addGroup = (input) => {
     let toBeAdded;
 
-    console.log(`addGroup invoked`)
-    console.log(`Type of input: ${typeof input}`)
-
     if (typeof input === "string") {
       toBeAdded = [new Group(input)];
-      console.log(`String detected in addGroup`)
     } else if (typeof input === "object") {
       toBeAdded = input.map((item) => new Group(item));
-      console.log(`Array detected, toBeAdded: ${JSON.stringify(toBeAdded)}`);
     }
 
     setPendingGroups([...pendingGroups, ...toBeAdded]);

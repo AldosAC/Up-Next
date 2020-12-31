@@ -5,22 +5,26 @@ const GenerateGroups = (props) => {
 
   const [ input, setInput ] = useState(0);
   const [ modal, setModal ] = useState(false);
+  const [ count, setCount ] = useState(1)
 
   const onClickHandler = () => {
     if (!modal) {
       setModal(true);
-    } else if (modal && input === "") {
+    } else if (modal && input === 0) {
       setModal(false);
     } else {
+      let newCount = count;
       let groups = new Array(Number(input)).fill('');
-      console.log(`Groups pre-map: ${JSON.stringify(groups)}, length: ${groups.length}`)
-      groups = groups.map((val, index) => `Group ${index + 1}`);
-
-      console.log(`Adding groups: ${JSON.stringify(groups)}`);
+      groups = groups.map(() => {
+        let str = `Group ${newCount}`
+        newCount++
+        return str;
+      });
 
       addGroup(groups);
       setModal(false);
       setInput(0);
+      setCount(newCount);
     }
   }
 
