@@ -11,15 +11,21 @@ const sampleGroups = [
 const Main = (props) => {
   const { session } = props;
 
-  const [ groups, setGroups ] = useState(sampleGroups);
+  const [ groups, setGroups ] = useState([]);
   const [ currentGroup, setCurrentGroup ] = useState(null);
   const [ pendingGroups, setPendingGroups ] = useState(groups);
 
-  const addGroup = (name) => {
-    let newGroup = new Group(name);
+  const addGroup = (input) => {
+    let toBeAdded;
 
-    setPendingGroups([...pendingGroups, newGroup]);
-    setGroups([...groups, newGroup]);
+    if (typeof input === "string") {
+      toBeAdded = [new Group(input)];
+    } else if (typeof input === "object") {
+      toBeAdded = input.map((item) => new Group(item));
+    }
+
+    setPendingGroups([...pendingGroups, ...toBeAdded]);
+    setGroups([...groups, ...toBeAdded]);
   }
 
   const upNextClickHandler = () => {

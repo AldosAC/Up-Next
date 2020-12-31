@@ -33,8 +33,7 @@ const AddGroups = (props) => {
         <input value={input} onChange={inputChangeHandler} ></input>
       </div>
     )
-  }
-  
+  } 
 }
 
 export default AddGroups;
