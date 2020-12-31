@@ -11,20 +11,26 @@ const sampleGroups = [
 const Main = (props) => {
   const { session } = props;
 
-  const [ groups, setGroups ] = useState(sampleGroups);
+  const [ groups, setGroups ] = useState([]);
   const [ currentGroup, setCurrentGroup ] = useState(null);
   const [ pendingGroups, setPendingGroups ] = useState(groups);
 
   const addGroup = (input) => {
     let toBeAdded;
-    if (typeof input === string) {
-      toBeAdded = new Group(input);
-    } else if (typeof input === array) {
+
+    console.log(`addGroup invoked`)
+    console.log(`Type of input: ${typeof input}`)
+
+    if (typeof input === "string") {
+      toBeAdded = [new Group(input)];
+      console.log(`String detected in addGroup`)
+    } else if (typeof input === "object") {
       toBeAdded = input.map((item) => new Group(item));
+      console.log(`Array detected, toBeAdded: ${JSON.stringify(toBeAdded)}`);
     }
 
-    setPendingGroups([...pendingGroups, toBeAdded]);
-    setGroups([...groups, toBeAdded]);
+    setPendingGroups([...pendingGroups, ...toBeAdded]);
+    setGroups([...groups, ...toBeAdded]);
   }
 
   const upNextClickHandler = () => {
