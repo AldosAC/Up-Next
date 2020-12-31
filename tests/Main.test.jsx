@@ -14,6 +14,7 @@ const sampleGroups = [
 describe("Main", () => {
   const setGroupsMock = jest.fn();
   const setCurrentGroupMock = jest.fn();
+  const setPendingGroupsMock = jest.fn();
 
   afterAll(() => {
     jest.restoreAllMocks();
@@ -22,9 +23,21 @@ describe("Main", () => {
   it("should render without throwing an error", () => {
     useStateMock.mockImplementationOnce(() => [sampleGroups, setGroupsMock]);
     useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
 
     const wrapper = shallow(<Main />);
 
     expect(wrapper.is(".main")).toBe(true);
+  });
+
+  it("should pick a random group when Up Next! is clicked", () => {
+    useStateMock.mockImplementationOnce(() => [sampleGroups, setGroupsMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
+
+    const wrapper = shallow(<Main />);
+
+    wrapper.find('.btn-up-next').simulate('click');
+    expect(setCurrentGroupMock).toHaveBeenCalled();
   });
 });

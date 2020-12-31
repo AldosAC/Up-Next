@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const AddGroups = (props) => {
-  const { setGroups } = props;
+  const { addGroup } = props;
 
   const [ groupName, setGroupName ] = useState("");
 
