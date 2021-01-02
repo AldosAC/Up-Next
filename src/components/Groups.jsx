@@ -5,13 +5,13 @@ import GroupsList from "./GroupsList.jsx";
 
 
 const Groups = (props) => {
-  const { groups, addGroup } = props;
+  const { groups, addGroup, deleteGroup } = props;
 
   return (
     <div className="groups-container" >
       <AddGroups addGroup={addGroup} />
       <GenerateGroups addGroup={addGroup} groups={groups} />
-      <GroupsList groups={groups} />
+      <GroupsList groups={groups} deleteGroup={deleteGroup} />
     </div>
   )
 }

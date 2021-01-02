@@ -23,6 +23,17 @@ const Main = (props) => {
     setGroups([...groups, ...toBeAdded]);
   }
 
+  const deleteGroup = (index) => {
+    let newGroups = [...groups];
+    let newPendingGroups = [...pendingGroups]
+    const [ removedGroup ] = newGroups.splice(index, 1);
+    const pendingIndex = pendingGroups.indexOf(removedGroup);
+    newPendingGroups.splice(pendingIndex, 1);
+    
+    setGroups(newGroups);
+    setPendingGroups(newPendingGroups);
+  }
+
   const upNextClickHandler = () => {
     const index = Math.floor(Math.random() * pendingGroups.length);
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
@@ -56,7 +67,7 @@ const Main = (props) => {
           Up Next!
         </button>
       </div>
-      <Groups groups={groups} addGroup={addGroup} />
+      <Groups groups={groups} addGroup={addGroup} deleteGroup={deleteGroup} />
     </div>
   )
 }
