@@ -29,8 +29,11 @@ const AddGroups = (props) => {
   } else {
     return (
       <div className="add-group-container" >
-        <button className="btn-add-group" onClick={onClickHandler} >Add Group</button>
-        <input value={input} onChange={inputChangeHandler} ></input>
+        <button className="btn-add-group" onClick={onClickHandler} >
+          Add Group
+        </button>
+        <input className="input-add-group" value={input} onChange={inputChangeHandler} >
+        </input>
       </div>
     )
   } 
