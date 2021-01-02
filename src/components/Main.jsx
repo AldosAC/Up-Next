@@ -51,7 +51,7 @@ const Main = (props) => {
   )
 
   return (
-    <div className="main">
+    <div className="main" >
       <div className="main-session-id">
         Session ID: {session}
       </div>

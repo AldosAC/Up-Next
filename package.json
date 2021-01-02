@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/AldosAC/Up-Next#readme",
   "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "sha256": "^0.2.0"
   },
   "devDependencies": {
