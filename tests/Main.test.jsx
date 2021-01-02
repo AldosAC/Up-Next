@@ -16,6 +16,10 @@ describe("Main", () => {
   const setCurrentGroupMock = jest.fn();
   const setPendingGroupsMock = jest.fn();
 
+  afterEach(() => {
+    jest.resetAllMocks();
+  })
+
   afterAll(() => {
     jest.restoreAllMocks();
   })
@@ -60,7 +64,57 @@ describe("Main", () => {
 
     wrapper.find('.btn-up-next').simulate('click');
     let { calls } = setCurrentGroupMock.mock;
-    let setCurrentGroupArg = calls[calls.length - 1][0];
+    let setCurrentGroupArg = calls[0][0];
     expect(setCurrentGroupArg.name).toEqual("That's All Folks!");
   });
+
+  it("should add a group when a single group is passed into addGroup", () => {
+    const groupName = "Test Groups";
+
+    //Main State
+    useStateMock.mockImplementationOnce(() => [[], setGroupsMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
+    //AddGroups State
+    useStateMock.mockImplementationOnce((init) => [groupName, jest.fn()]);
+    useStateMock.mockImplementationOnce((init) => [true, jest.fn()]);
+    //All Else State
+    useStateMock.mockImplementation((init) => [init, jest.fn()]);
+
+    const wrapper = mount(<Main session="ABCD" />);
+    
+
+    wrapper.find(".btn-add-group").simulate("click");
+    let [[ lastSetGroupsCall ]] = setGroupsMock.mock.calls;
+    let [[ lastSetPendingGroupsCall ]] = setPendingGroupsMock.mock.calls;
+    let wasAdded = lastSetGroupsCall[0].name === groupName 
+     && lastSetPendingGroupsCall[0].name === groupName;
+
+    expect(wasAdded).toBe(true);
+  })
+
+  it("should add a group when multiple groups are passed into addGroup", () => {
+    const groupNames = ["Test Group1", "Test Group2"];
+
+    //Main State
+    useStateMock.mockImplementationOnce(() => [[], setGroupsMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
+    useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
+    //AddGroups State
+    useStateMock.mockImplementationOnce((init) => [groupNames, jest.fn()]);
+    useStateMock.mockImplementationOnce((init) => [true, jest.fn()]);
+    //All Else State
+    useStateMock.mockImplementation((init) => [init, jest.fn()]);
+
+    const wrapper = mount(<Main session="ABCD" />);
+    
+
+    wrapper.find(".btn-add-group").simulate("click");
+    let [[ lastSetGroupsCall ]] = setGroupsMock.mock.calls;
+    let [[ lastSetPendingGroupsCall ]] = setPendingGroupsMock.mock.calls;
+    let wasAdded = lastSetGroupsCall.length === groupNames.length;
+
+    expect(wasAdded).toBe(true);
+  })
+
 });
