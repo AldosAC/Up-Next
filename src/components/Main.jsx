@@ -3,11 +3,6 @@ import Groups from "./Groups.jsx";
 import CurrentGroup from "./CurrentGroup.jsx";
 import Group from "../models/Group.js";
 
-const sampleGroups = [
-  { name: "group 1", hasGone: false },
-  { name: "group 2", hasGone: false }
-];
-
 const Main = (props) => {
   const { session } = props;
 
