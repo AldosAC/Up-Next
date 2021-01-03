@@ -14,7 +14,7 @@ const GenerateGroups = (props) => {
 
     groupNames.map(([ firstWord, secondWord ]) => {
       if (
-        firstWord === "Group" 
+        firstWord.toLower() === "group" 
         && Number(secondWord) > highestCount
       ) {
         highestCount = Number(secondWord);
