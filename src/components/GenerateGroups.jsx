@@ -1,10 +1,28 @@
 import React, { useState } from "react";
 
 const GenerateGroups = (props) => {
-  const { addGroup, count, setCount } = props;
+  const { groups, addGroup } = props;
 
   const [ input, setInput ] = useState(0);
   const [ modal, setModal ] = useState(false);
+
+  const getHighestCount = () => {
+    let highestCount = 0;
+    let groupNames = groups.map((group) => {
+      return group.name.split(' ');
+    });
+
+    groupNames.map(([ firstWord, secondWord ]) => {
+      if (
+        firstWord === "Group" 
+        && Number(secondWord) > highestCount
+      ) {
+        highestCount = Number(secondWord);
+      }
+    });
+
+    return highestCount + 1;
+  };
 
   const onClickHandler = () => {
     if (!modal) {
@@ -12,18 +30,17 @@ const GenerateGroups = (props) => {
     } else if (modal && input === 0) {
       setModal(false);
     } else {
-      let newCount = count;
+      let count = getHighestCount();
       let groups = new Array(Number(input)).fill('');
       groups = groups.map(() => {
-        let str = `Group ${newCount}`
-        newCount++
+        let str = `Group ${count}`
+        count++
         return str;
       });
 
       addGroup(groups);
       setModal(false);
       setInput(0);
-      setCount(newCount);
     }
   }
 

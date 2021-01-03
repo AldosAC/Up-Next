@@ -9,7 +9,6 @@ const Main = (props) => {
   const [ groups, setGroups ] = useState([]);
   const [ currentGroup, setCurrentGroup ] = useState(null);
   const [ pendingGroups, setPendingGroups ] = useState(groups);
-  const [ count, setCount ] = useState(1)
 
   const addGroup = (input) => {
     let toBeAdded;
@@ -29,7 +28,10 @@ const Main = (props) => {
     let newPendingGroups = [...pendingGroups]
     const [ removedGroup ] = newGroups.splice(index, 1);
     const pendingIndex = pendingGroups.indexOf(removedGroup);
-    newPendingGroups.splice(pendingIndex, 1);
+
+    if (pendingIndex >= 0) {
+      newPendingGroups.splice(pendingIndex, 1);
+    }
     
     setGroups(newGroups);
     setPendingGroups(newPendingGroups);
@@ -39,7 +41,6 @@ const Main = (props) => {
     setGroups([]);
     setCurrentGroup(null);
     setPendingGroups([]);
-    setCount(1);
   };
 
   const upNextClickHandler = () => {
@@ -80,8 +81,6 @@ const Main = (props) => {
         addGroup={addGroup}
         deleteGroup={deleteGroup}
         clearGroups={clearGroups}
-        count={count}
-        setCount={setCount}
       />
     </div>
   );
