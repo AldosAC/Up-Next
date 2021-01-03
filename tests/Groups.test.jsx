@@ -7,13 +7,20 @@ describe("Groups", () => {
   ];
 
   const setGroupsMock = jest.fn();
+  const deleteGroupMock = jest.fn();
 
   afterAll(() => {
     jest.restoreAllMocks();
   })
 
   it("should render without throwing an error", () => {
-const wrapper = shallow(<Groups groups={sampleGroups} setGroups={setGroupsMock} />);
+    const wrapper = shallow(
+      <Groups 
+        groups={sampleGroups} 
+        setGroups={setGroupsMock} 
+        deleteGroup ={deleteGroupMock} 
+      />
+    );
 
     expect(wrapper.is(".groups-container")).toBe(true);
   });

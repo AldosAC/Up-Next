@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
 const GenerateGroups = (props) => {
-  const { addGroup } = props;
+  const { addGroup, count, setCount } = props;
 
   const [ input, setInput ] = useState(0);
   const [ modal, setModal ] = useState(false);
-  const [ count, setCount ] = useState(1)
 
   const onClickHandler = () => {
     if (!modal) {
