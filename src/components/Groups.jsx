@@ -21,8 +21,6 @@ const Groups = (props) => {
       <GenerateGroups
         addGroup={addGroup}
         groups={groups}
-        count={count}
-        setCount={setCount}
       />
       <GroupsList groups={groups} deleteGroup={deleteGroup} />
     </div>
