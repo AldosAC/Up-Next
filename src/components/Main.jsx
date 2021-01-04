@@ -70,8 +70,8 @@ const Main = (props) => {
       <div className="main-session-id">
         Session ID: {session}
       </div>
-      {checkCurrentGroup()}
       <div className="up-next-container">
+        {checkCurrentGroup()}
         <button className="btn-up-next" onClick={upNextClickHandler} >
           Up Next!
         </button>
