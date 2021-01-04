@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 const GenerateGroups = (props) => {
   const { groups, addGroup } = props;
 
   const [ input, setInput ] = useState(0);
   const [ modal, setModal ] = useState(false);
+
+  const inputRef = useCallback((node) => node ? node.focus() : undefined);
 
   const getHighestCount = () => {
     let highestCount = 0;
@@ -48,21 +50,18 @@ const GenerateGroups = (props) => {
 
   const keyPressHandler = ({ key }) => key === "Enter" ? onClickHandler() : undefined;
 
-  const checkModal = () => (
-    modal ?
-    <input 
-      className="input-generate-groups"
-      type="number" 
-      value={input} 
-      onChange={inputChangeHandler} 
-      onKeyPress={keyPressHandler}
-    ></input> 
-    : null
-  )
+  const inputClassNames = modal ? "input-generate-groups" : "input-generate-groups input-hidden";
 
   return (
     <div className="generate-groups-container" >
-      {checkModal()}
+      <input 
+        ref={inputRef}
+        className={inputClassNames}
+        type="number" 
+        value={input} 
+        onChange={inputChangeHandler} 
+        onKeyPress={keyPressHandler}
+      ></input> 
       <button
         className="btn-generate-groups"
         onClick={onClickHandler}
