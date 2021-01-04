@@ -9,8 +9,11 @@ const App = (props) => {
   if (!session) {
     return (
       <div className="main-container">
-        <span>Welcome!</span>
-        <Session setSession={setSession} />
+        <div className="landing-page">
+          <span className="text-welcome">Welcome!</span>
+          <div className="landing-spacer"></div>
+          <Session setSession={setSession} />
+        </div>
       </div>
     )
   } else {
