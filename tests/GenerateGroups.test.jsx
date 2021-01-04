@@ -30,7 +30,12 @@ describe("AddGroups", () => {
     useStateMock.mockImplementationOnce((init) => [init, setModalMock]);
     useStateMock.mockImplementationOnce((init) => [init, setCountMock])
 
-    const wrapper = shallow(<GenerateGroups addGroup={addGroupMock} />)
+    const wrapper = shallow(
+      <GenerateGroups 
+        addGroup={addGroupMock}
+        groups={sampleGroups}
+      />
+    );
 
     expect(wrapper.is(".generate-groups-container")).toBe(true);
   });
@@ -40,7 +45,12 @@ describe("AddGroups", () => {
     useStateMock.mockImplementationOnce((init) => [init, setModalMock]);
     useStateMock.mockImplementationOnce((init) => [init, setCountMock])
 
-    const wrapper = shallow(<GenerateGroups addGroup={addGroupMock} />)
+    const wrapper = shallow(
+      <GenerateGroups 
+        addGroup={addGroupMock}
+        groups={sampleGroups}
+      />
+    );
 
     wrapper.find(".btn-generate-groups").simulate("click");
 
@@ -52,7 +62,12 @@ describe("AddGroups", () => {
     useStateMock.mockImplementationOnce((init) => [true, setModalMock]);
     useStateMock.mockImplementationOnce((init) => [init, setCountMock])
 
-    const wrapper = shallow(<GenerateGroups addGroup={addGroupMock} />)
+    const wrapper = shallow(
+      <GenerateGroups 
+        addGroup={addGroupMock}
+        groups={sampleGroups}
+      />
+    );
 
     wrapper.find(".btn-generate-groups").simulate("click");
 
@@ -64,7 +79,12 @@ describe("AddGroups", () => {
     useStateMock.mockImplementationOnce((init) => [true, setModalMock]);
     useStateMock.mockImplementationOnce((init) => [init, setCountMock])
 
-    const wrapper = shallow(<GenerateGroups addGroup={addGroupMock} />)
+    const wrapper = shallow(
+      <GenerateGroups 
+        addGroup={addGroupMock}
+        groups={sampleGroups}
+      />
+    );
 
     wrapper.find(".btn-generate-groups").simulate("click");
 
