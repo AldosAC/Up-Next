@@ -1,0 +1,104 @@
+html, body {
+  margin:0px;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Landing */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(34, 34, 34);
+  border-radius: 6px;
+  padding: 5px;
+  width: 200px;
+  height: 400px;
+  position: absolute;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.text-welcome {
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  top: 50px;
+}
+
+.landing-spacer {
+  position: relative;
+  height: 250px;
+  width: 186px;
+  flex-shrink: 0;
+}
+
+/* Session */
+
+.session {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-session-question {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-existing-session {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.btn-new-session {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 186px;
+}
+
+.text-enter-session {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.session-input {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 186px;
+}
+
+.btn-submit-session {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 186px;
+}
+
+/* Main View */
+.main {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
