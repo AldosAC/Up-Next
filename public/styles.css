@@ -229,6 +229,11 @@ div, input {
   bottom: 21px;
 }
 
+.input-hidden {
+  visibility: hidden;
+  height: 0;
+}
+
 /* Groups List */
 
 .groups-list {
