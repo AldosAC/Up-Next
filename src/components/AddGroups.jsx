@@ -18,7 +18,9 @@ const AddGroups = (props) => {
     }
   }
 
-  const inputChangeHandler = ({ target: { value }}) => setInput(value);
+  const inputChangeHandler = ({ key, target: { value }}) => setInput(value);
+
+  const keyPressHandler = ({ key }) => key === "Enter" ? onClickHandler() : undefined;
 
   if (!modal) {
     return (
@@ -32,7 +34,12 @@ const AddGroups = (props) => {
         <button className="btn-add-group" onClick={onClickHandler} >
           Add Group
         </button>
-        <input className="input-add-group" value={input} onChange={inputChangeHandler} >
+        <input 
+          className="input-add-group" 
+          value={input} 
+          onChange={inputChangeHandler} 
+          onKeyPress={keyPressHandler}
+        >
         </input>
       </div>
     )
