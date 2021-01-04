@@ -46,15 +46,27 @@ const GenerateGroups = (props) => {
 
   const inputChangeHandler = ({ target: { value }}) => setInput(value);
 
+  const keyPressHandler = ({ key }) => key === "Enter" ? onClickHandler() : undefined;
+
   const checkModal = () => (
     modal ?
-    <input type="number" value={input} onChange={inputChangeHandler} ></input> 
+    <input 
+      type="number" 
+      value={input} 
+      onChange={inputChangeHandler} 
+      onKeyPress={keyPressHandler}
+    ></input> 
     : null
   )
 
   return (
     <div className="generate-groups-container" >
-      <button className="btn-generate-groups" onClick={onClickHandler} >Generate Groups</button>
+      <button
+        className="btn-generate-groups"
+        onClick={onClickHandler}
+      >
+        Generate Groups
+      </button>
       {checkModal()}
     </div>
   )

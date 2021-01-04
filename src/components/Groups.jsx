@@ -10,8 +10,6 @@ const Groups = (props) => {
     addGroup,
     deleteGroup,
     clearGroups,
-    count,
-    setCount
   } = props;
 
   return (
