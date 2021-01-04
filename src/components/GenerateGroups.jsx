@@ -51,6 +51,7 @@ const GenerateGroups = (props) => {
   const checkModal = () => (
     modal ?
     <input 
+      className="input-generate-groups"
       type="number" 
       value={input} 
       onChange={inputChangeHandler} 
@@ -61,13 +62,13 @@ const GenerateGroups = (props) => {
 
   return (
     <div className="generate-groups-container" >
+      {checkModal()}
       <button
         className="btn-generate-groups"
         onClick={onClickHandler}
       >
         Generate Groups
       </button>
-      {checkModal()}
     </div>
   )
 }

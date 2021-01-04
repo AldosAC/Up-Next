@@ -2,8 +2,9 @@ html, body {
   margin:0px;
 }
 
-div {
+div, input {
   box-sizing: border-box;
+  margin: 0;
 }
 
 .main-container {
@@ -97,8 +98,177 @@ div {
 }
 
 /* Main View */
+
 .main {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   height: 100vh;
   width: 100%;
+}
+
+.main-session-id {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 10px 10px 0 0;
+  padding: 3px;
+  right: 0px;
+  top: 0px;
+}
+
+.up-next-container {
+  position: relative;
+  display: inline;
+  align-content: center;
+  height: 60%;
+  width: 100%;
+}
+
+.current-group {
+  position: absolute;
+  font-size: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%
+}
+
+.btn-up-next {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 100px;
+  font-size: 18px;
+}
+
+/* Groups */
+
+.groups-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  height: 30%;
+  width: 100%;
+}
+
+.groups-controls-container {
+  position: relative;
+  height: 55px;
+  width: 100%;
+}
+
+.btn-clear-groups {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 22px;
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.add-generate-container {
+  position: absolute;
+  display: flex;
+  margin-bottom: 3px;
+  width: 246px;
+  height: 50px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.add-group-container {
+  position: absolute;
+  width: 120px;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  flex-shrink: 0;
+  margin-right: 3px;
+}
+
+.btn-add-group {
+  position: absolute;
+  height: 22px;
+  width: 100%;
+  bottom: 0;
+}
+
+.input-add-group {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+  bottom: 21px;
+}
+
+.generate-groups-container {
+  position: absolute;
+  width: 120px;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  margin-right: 3px;
+  flex-shrink: 0;
+}
+
+.btn-generate-groups {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+  bottom: 0;
+}
+
+.input-generate-groups {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+  bottom: 21px;
+}
+
+/* Groups List */
+
+.groups-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  overflow: auto;
+}
+
+.groups-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px 0 5px;
+  flex-shrink: 0;
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 50px;
+  width: 100px;
+}
+
+.btn-delete-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  margin: 2px 2px 0 0;
+  padding: 2px;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: 0;
 }

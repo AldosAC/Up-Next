@@ -14,12 +14,16 @@ const Groups = (props) => {
 
   return (
     <div className="groups-container" >
-      <button className="btn-clear-groups" onClick={clearGroups} >Clear Groups</button>
-      <AddGroups addGroup={addGroup} />
-      <GenerateGroups
-        addGroup={addGroup}
-        groups={groups}
-      />
+      <div className="groups-controls-container">
+        <button className="btn-clear-groups" onClick={clearGroups} >Clear Groups</button>
+        <div className="add-generate-container">
+          <AddGroups addGroup={addGroup} />
+          <GenerateGroups
+            addGroup={addGroup}
+            groups={groups}
+          />
+        </div>
+      </div>
       <GroupsList groups={groups} deleteGroup={deleteGroup} />
     </div>
   )
