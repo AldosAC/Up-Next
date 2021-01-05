@@ -14,15 +14,15 @@
         },
     
     
-          "functionupnext-sessionName": {
+          "functionupnextsessionName": {
             "Type": "String",
-            "Default": "functionupnext-sessionName"
+            "Default": "functionupnextsessionName"
           },
         
           
-          "functionupnext-sessionArn": {
+          "functionupnextsessionArn": {
             "Type": "String",
-            "Default": "functionupnext-sessionArn"
+            "Default": "functionupnextsessionArn"
           }
         
           
@@ -176,7 +176,7 @@
                             
                             {
                                 
-                                "Ref": "functionupnext-sessionArn"
+                                "Ref": "functionupnextsessionArn"
                             },
                             
                             "/invocations"
@@ -275,7 +275,7 @@
                           
                           {
                             
-                            "Ref": "functionupnext-sessionArn"
+                            "Ref": "functionupnextsessionArn"
                           },
                           
                           "/invocations"
@@ -337,7 +337,7 @@
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functionupnext-sessionName"
+                        "Ref":  "functionupnextsessionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",

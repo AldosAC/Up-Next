@@ -1,6 +1,11 @@
 {
   "function": {
-    "upnext-session": {
+    "UpNextSession": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "upnextsession": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -13,7 +18,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "upnext-session",
+          "resourceName": "upnextsession",
           "attributes": [
             "Name",
             "Arn"

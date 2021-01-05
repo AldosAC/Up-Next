@@ -34,13 +34,13 @@
             "FunctionName": {
                 "Fn::If": [
                     "ShouldNotCreateEnvResources",
-                    "upnext-session",
+                    "upnextsession",
                     {
 
                         "Fn::Join": [
                             "",
                             [
-                                "upnext-session",
+                                "upnextsession",
                                 "-",
                                 {
                                     "Ref": "env"
@@ -65,13 +65,13 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "upnextLambdaRole1568a42e",
+                        "upnextLambdaRole77dac1ca",
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                    "upnextLambdaRole1568a42e",
+                                    "upnextLambdaRole77dac1ca",
                                     "-",
                                     {
                                         "Ref": "env"
