@@ -259,6 +259,8 @@ div, input {
   height: 100%;
   list-style-type: none;
   overflow: auto;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .groups-list-item {

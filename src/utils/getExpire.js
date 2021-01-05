@@ -1,5 +1,5 @@
 module.exports.getExpire = () => {
-  const lifespan = 600;
+  const lifespan = 172800;
 
   return Math.round(Date.now() / 1000 + lifespan);
 }
