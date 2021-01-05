@@ -5,6 +5,7 @@ import Group from "../models/Group.js";
 import debounce from "lodash.debounce";
 import config from "../config.json";
 import axios from "axios";
+import { getExpire } from "../utils/getExpire.js";
 
 const Main = (props) => {
   const { session } = props;
@@ -15,6 +16,7 @@ const Main = (props) => {
 
   const sendUpdate = debounce((session) => {
     const url = `${config.apiUrl}/${session.sessionId}/`;
+    session.expire = getExpire();
 
     axios({
       method: "put",
