@@ -1,26 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import sha256 from "sha256";
+import axios from "axios";
+import Session from "../models/Session.js";
+import { apiUrl } from "../config.json";
 
-const Session = (props) => {
+const Sessions = (props) => {
   const { setSession } = props;
 
   const [inputValue, setInputValue] = useState("");
   const [hasSession, setHasSession] = useState(false);
 
   const generateSession = () => {
-    return sha256(Math.random().toString()).slice(0, 4).toUpperCase();
+    return new Session(sha256(Math.random().toString()).slice(0, 4).toUpperCase());
   }
 
-  const onChangeHandler = ({ target }) => {
-    setInputValue(target.value);
-  }
+  const onChangeHandler = ({ target }) => setInputValue(target.value);
+  
+  const submitSessionHandler = (event) => {
+    const id = inputValue.slice(0,4);
+    const url = `${apiUrl}/${id}/`;
 
-  const submitSessionHandler = () => setSession(inputValue.slice(0,4));
+    console.log(`GET url: ${url}`);
+
+    event.preventDefault();
+
+    axios({
+      method: "get",
+      url
+    })
+      .then(({ data }) => {
+        setSession(data);
+      })
+      .catch((err) => {
+        console.log(`Error loading session: ${err}`);
+        setSession(null);
+      })
+  }
 
   const existingSessionHandler = () => setHasSession(true);
 
-  const newSessionHandler = () => setSession(generateSession());
+  const newSessionHandler = () => {
+    let newSession = generateSession();
+    const url = `${apiUrl}/${newSession.sessionId}/`;
 
+    console.log(`PUT url: ${url}`);
+
+    axios({
+      method: "put",
+      url,
+      data: newSession
+    });
+    setSession(newSession);
+  }
   if (hasSession) {
     return (
       <form className="session has-session">
@@ -52,4 +83,4 @@ const Session = (props) => {
 
 }
 
-export default Session;
+export default Sessions;

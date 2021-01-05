@@ -1,10 +1,13 @@
 import Main from "../src/components/Main.jsx";
 import { useState as useStateMock } from "react";
+import Session from "../src/models/Session.js";
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn()
 }));
+
+const sampleSession = new Session("ABCD");
 
 const sampleGroups = [
   { name: "group 1", hasGone: false },
@@ -29,7 +32,7 @@ describe("Main", () => {
     useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
     useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
 
-    const wrapper = shallow(<Main />);
+    const wrapper = shallow(<Main session={sampleSession} />);
 
     expect(wrapper.is(".main")).toBe(true);
   });
@@ -39,7 +42,7 @@ describe("Main", () => {
     useStateMock.mockImplementationOnce((init) => [sampleGroups[0], setCurrentGroupMock]);
     useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
 
-    const wrapper = shallow(<Main />);
+    const wrapper = shallow(<Main session={sampleSession} />);
 
     expect(wrapper.find('CurrentGroup')).toExist();
   });
@@ -49,7 +52,7 @@ describe("Main", () => {
     useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
     useStateMock.mockImplementationOnce((init) => [init, setPendingGroupsMock]);
 
-    const wrapper = shallow(<Main />);
+    const wrapper = shallow(<Main session={sampleSession} />);
 
     wrapper.find('.btn-up-next').simulate('click');
     expect(setCurrentGroupMock).toHaveBeenCalled();
@@ -60,7 +63,7 @@ describe("Main", () => {
     useStateMock.mockImplementationOnce((init) => [init, setCurrentGroupMock]);
     useStateMock.mockImplementationOnce((init) => [[], setPendingGroupsMock]);
 
-    const wrapper = shallow(<Main />);
+    const wrapper = shallow(<Main session={sampleSession} />);
 
     wrapper.find('.btn-up-next').simulate('click');
     let { calls } = setCurrentGroupMock.mock;
@@ -81,7 +84,7 @@ describe("Main", () => {
     //All Else State
     useStateMock.mockImplementation((init) => [init, jest.fn()]);
 
-    const wrapper = mount(<Main session="ABCD" />);
+    const wrapper = mount(<Main session={sampleSession} />);
     
 
     wrapper.find(".btn-add-group").simulate("click");
@@ -106,7 +109,7 @@ describe("Main", () => {
     //All Else State
     useStateMock.mockImplementation((init) => [init, jest.fn()]);
 
-    const wrapper = mount(<Main session="ABCD" />);
+    const wrapper = mount(<Main session={sampleSession} />);
     
 
     wrapper.find(".btn-add-group").simulate("click");

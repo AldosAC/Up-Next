@@ -2,13 +2,41 @@ import React, { useState } from "react";
 import Groups from "./Groups.jsx";
 import CurrentGroup from "./CurrentGroup.jsx";
 import Group from "../models/Group.js";
+import debounce from "lodash.debounce";
+import config from "../config.json";
+import axios from "axios";
+import { getExpire } from "../utils/getExpire.js";
 
 const Main = (props) => {
   const { session } = props;
 
-  const [ groups, setGroups ] = useState([]);
-  const [ currentGroup, setCurrentGroup ] = useState(null);
-  const [ pendingGroups, setPendingGroups ] = useState(groups);
+  const [ groups, setGroups ] = useState(session.groups);
+  const [ currentGroup, setCurrentGroup ] = useState(session.currentGroup);
+  const [ pendingGroups, setPendingGroups ] = useState(session.pendingGroups);
+
+  const sendUpdate = debounce((session) => {
+    const url = `${config.apiUrl}/${session.sessionId}/`;
+    session.expire = getExpire();
+
+    axios({
+      method: "put",
+      url,
+      data: session
+    })
+      .catch((err) => console.log(`Unable to update back-end: ${err}`));
+  }, 4000);
+
+  const indexOf = (arr, target) => {
+    return arr.reduce((acc, { name }, index) => {
+      if (acc !== -1) {
+        return acc;
+      } else if (name === target.name) {
+        return index;
+      } else {
+        return -1;
+      }
+    }, -1);
+  }
 
   const addGroup = (input) => {
     let toBeAdded;
@@ -19,25 +47,40 @@ const Main = (props) => {
       toBeAdded = input.map((item) => new Group(item));
     }
 
-    setPendingGroups([...pendingGroups, ...toBeAdded]);
-    setGroups([...groups, ...toBeAdded]);
+    const updatedSession = session;
+    updatedSession.groups = [...groups, ...toBeAdded];
+    updatedSession.pendingGroups = [...pendingGroups, ...toBeAdded];
+    updatedSession.currentGroup = currentGroup;
+
+    sendUpdate(updatedSession);
+    setPendingGroups(updatedSession.pendingGroups);
+    setGroups(updatedSession.groups);
   };
 
   const deleteGroup = (index) => {
-    let newGroups = [...groups];
-    let newPendingGroups = [...pendingGroups]
-    const [ removedGroup ] = newGroups.splice(index, 1);
-    const pendingIndex = pendingGroups.indexOf(removedGroup);
+    const updatedSession = session;
+    updatedSession.groups = [...groups];
+    updatedSession.pendingGroups = [...pendingGroups];
+    updatedSession.currentGroup = currentGroup;
+    const [ removedGroup ] = updatedSession.groups.splice(index, 1);
+    const pendingIndex = indexOf(updatedSession.pendingGroups, removedGroup);
 
     if (pendingIndex >= 0) {
-      newPendingGroups.splice(pendingIndex, 1);
+      updatedSession.pendingGroups.splice(pendingIndex, 1);
     }
     
-    setGroups(newGroups);
-    setPendingGroups(newPendingGroups);
+    sendUpdate(updatedSession);
+    setGroups(updatedSession.groups);
+    setPendingGroups(updatedSession.pendingGroups);
   };
 
   const clearGroups = () => {
+    const updatedSession = session;
+    updatedSession.groups = [];
+    updatedSession.currentGroup = null;
+    updatedSession.pendingGroups = [];
+
+    sendUpdate(updatedSession);
     setGroups([]);
     setCurrentGroup(null);
     setPendingGroups([]);
@@ -48,14 +91,17 @@ const Main = (props) => {
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
     if(pendingGroups.length > 0) {
-      let newPendingGroups = pendingGroups.slice();
-      let newGroups = groups.slice();
-      const queuedGroup = newPendingGroups.splice(index, 1)[0];
-      newGroups[groups.indexOf(queuedGroup)].hasGone = true;
+      const updatedSession = session;
+      updatedSession.groups = groups.slice();
+      updatedSession.pendingGroups = pendingGroups.slice();
 
-      setPendingGroups(newPendingGroups);
-      setGroups(newGroups);
-      setCurrentGroup(queuedGroup);
+      updatedSession.currentGroup = updatedSession.pendingGroups.splice(index, 1)[0];
+      updatedSession.groups[indexOf(updatedSession.groups, updatedSession.currentGroup)].hasGone = true;
+
+      sendUpdate(updatedSession);
+      setPendingGroups(updatedSession.pendingGroups);
+      setGroups(updatedSession.groups);
+      setCurrentGroup(updatedSession.currentGroup);
     } else {
       setCurrentGroup(finishedPlaceholder);
     }
@@ -68,7 +114,7 @@ const Main = (props) => {
   return (
     <div className="main" >
       <div className="main-session-id">
-        Session ID: {session}
+        Session ID: {session.sessionId}
       </div>
       <div className="up-next-container">
         {checkCurrentGroup()}

@@ -1,4 +1,4 @@
-import Session from "../src/components/Session.jsx";
+import Sessions from "../src/components/Sessions.jsx";
 import { useState as useStateMock } from "react";
 
 jest.mock('react', () => ({
@@ -19,7 +19,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce((init) => [init, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
 
     expect(wrapper.is(".session")).toBe(true);
   });
@@ -28,7 +28,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce((init) => [init, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
 
     expect(wrapper.is(".no-session")).toBe(true);
   });
@@ -37,7 +37,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce(() => [true, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
 
     expect(wrapper.is(".has-session")).toBe(true);
   });
@@ -46,7 +46,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce((init) => [init, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
     wrapper.find(".btn-new-session").simulate("click")
     expect(setSessionMock).toHaveBeenCalled();
   });
@@ -55,7 +55,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce((init) => [init, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
     wrapper.find(".btn-existing-session").simulate("click")
     expect(setHasSessionMock).toHaveBeenCalled();
   });
@@ -64,7 +64,7 @@ describe("Session", () => {
     useStateMock.mockImplementationOnce((init) => [init, setInputValueMock]);
     useStateMock.mockImplementationOnce((init) => [true, setHasSessionMock]);
 
-    const wrapper = shallow(<Session setSession={setSessionMock} />);
+    const wrapper = shallow(<Sessions setSession={setSessionMock} />);
     wrapper.find(".session-input").simulate("change", { target: { value: "b" }});
     expect(setInputValueMock).toHaveBeenCalled();
   })
