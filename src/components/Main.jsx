@@ -90,6 +90,8 @@ const Main = (props) => {
     const index = Math.floor(Math.random() * pendingGroups.length);
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
+    console.log(`Index of presenting group: ${index}`);
+
     if(pendingGroups.length > 0) {
       const updatedSession = session;
       updatedSession.groups = groups.slice();
