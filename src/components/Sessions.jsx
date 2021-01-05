@@ -10,6 +10,8 @@ const Sessions = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [hasSession, setHasSession] = useState(false);
 
+  const inputRef = useCallback((node) => node ? node.focus() : undefined);
+
   const generateSession = () => {
     return new Session(sha256(Math.random().toString()).slice(0, 4).toUpperCase());
   }
@@ -62,6 +64,7 @@ const Sessions = (props) => {
       <form className="session has-session">
         <span className="text-enter-session">Enter your 4 digit session ID</span>
         <input 
+          ref={inputRef}
           className="session-input" 
           value={inputValue} 
           onChange={onChangeHandler}

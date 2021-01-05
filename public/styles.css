@@ -285,6 +285,10 @@ button:hover {
   width: 100px;
 }
 
+.group-has-gone {
+  background-color: darkslategrey;
+}
+
 .btn-delete-item {
   position: absolute;
   display: flex;
