@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/session",
+            "lambdaFunction": "upnext-session",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/session"
+        }
+    ],
+    "resourceName": "session",
+    "apiName": "session",
+    "functionArns": [
+        {
+            "lambdaFunction": "upnext-session"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-upnext-prod-142329-authRole",
+        "unAuthRoleName": "amplify-upnext-prod-142329-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "upnext-session",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

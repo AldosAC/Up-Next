@@ -1,0 +1,15 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-upnext-prod-142329-authRole",
+      "UnauthRoleArn": "arn:aws:iam::593306021360:role/amplify-upnext-prod-142329-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::593306021360:role/amplify-upnext-prod-142329-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-upnext-prod-142329-deployment",
+      "UnauthRoleName": "amplify-upnext-prod-142329-unauthRole",
+      "StackName": "amplify-upnext-prod-142329",
+      "StackId": "arn:aws:cloudformation:us-west-2:593306021360:stack/amplify-upnext-prod-142329/7abad100-4edb-11eb-a310-06a0dda30dc1",
+      "AmplifyAppId": "dembe2bqd6apd"
+    }
+  }
+}
