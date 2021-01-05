@@ -39,9 +39,19 @@ div, input {
 
 .landing-spacer {
   position: relative;
+  display: flex;
+  justify-content: center;
   height: 250px;
   width: 186px;
   flex-shrink: 0;
+}
+
+.session-fail-message {
+  position: absolute;
+  font-size: 12px;
+  bottom: 0;
+  margin: 10px;
+  color: red;
 }
 
 /* Session */

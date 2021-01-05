@@ -4,14 +4,20 @@ import Main from "./Main.jsx";
 
 const App = (props) => {
   const [ session, setSession ] = useState(null);
+  const [ failed, setFailed ] = useState(null);
+
+  const failMessage = <spawn className="session-fail-message">{`Unable to find session "${failed}"`}</spawn>
+  const checkFailed = () => failed ? failMessage : null;
   
   if (!session) {
     return (
       <div className="main-container">
         <div className="landing-page">
           <span className="text-welcome">Welcome!</span>
-          <div className="landing-spacer"></div>
-          <Sessions setSession={setSession} />
+          <div className="landing-spacer">
+            {checkFailed()}
+          </div>
+          <Sessions setSession={setSession} setFailed={setFailed} />
         </div>
       </div>
     )

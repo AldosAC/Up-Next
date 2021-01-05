@@ -5,7 +5,7 @@ import Session from "../models/Session.js";
 import { apiUrl } from "../config.json";
 
 const Sessions = (props) => {
-  const { setSession } = props;
+  const { setSession, setFailed } = props;
 
   const [inputValue, setInputValue] = useState("");
   const [hasSession, setHasSession] = useState(false);
@@ -29,11 +29,16 @@ const Sessions = (props) => {
       url
     })
       .then(({ data }) => {
-        setSession(data);
+        console.log(`GET Succeed.  Data: ${data}`)
+        if (!data) {
+          setHasSession(false);
+          setFailed(id);
+        } else {
+          setSession(data);
+        }
       })
       .catch((err) => {
         console.log(`Error loading session: ${err}`);
-        setSession(null);
       })
   }
 
