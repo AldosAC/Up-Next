@@ -24,6 +24,18 @@ const Main = (props) => {
       .catch((err) => console.log(`Unable to update back-end: ${err}`));
   }, 4000);
 
+  const indexOf = (arr, target) => {
+    return arr.reduce((acc, { name }, index) => {
+      if (acc !== -1) {
+        return acc;
+      } else if (name === target.name) {
+        return index;
+      } else {
+        return -1;
+      }
+    }, -1);
+  }
+
   const addGroup = (input) => {
     let toBeAdded;
 
@@ -49,15 +61,7 @@ const Main = (props) => {
     updatedSession.pendingGroups = [...pendingGroups];
     updatedSession.currentGroup = currentGroup;
     const [ removedGroup ] = updatedSession.groups.splice(index, 1);
-    const pendingIndex = updatedSession.pendingGroups.reduce((acc, { name }, index) => {
-      if (acc !== -1) {
-        return acc;
-      } else if (name === removedGroup.name) {
-        return index;
-      } else {
-        return -1;
-      }
-    }, -1);
+    const pendingIndex = indexOf(updatedSession.pendingGroups, removedGroup);
 
     if (pendingIndex >= 0) {
       updatedSession.pendingGroups.splice(pendingIndex, 1);
@@ -85,14 +89,17 @@ const Main = (props) => {
     const finishedPlaceholder = { name: "That's All Folks!", hasGone: false }
 
     if(pendingGroups.length > 0) {
-      let newPendingGroups = pendingGroups.slice();
-      let newGroups = groups.slice();
-      const queuedGroup = newPendingGroups.splice(index, 1)[0];
-      newGroups[groups.indexOf(queuedGroup)].hasGone = true;
+      const updatedSession = session;
+      updatedSession.groups = groups.slice();
+      updatedSession.pendingGroups = pendingGroups.slice();
 
-      setPendingGroups(newPendingGroups);
-      setGroups(newGroups);
-      setCurrentGroup(queuedGroup);
+      updatedSession.currentGroup = updatedSession.pendingGroups.splice(index, 1)[0];
+      updatedSession.groups[indexOf(updatedSession.groups, updatedSession.currentGroup)].hasGone = true;
+
+      sendUpdate(updatedSession);
+      setPendingGroups(updatedSession.pendingGroups);
+      setGroups(updatedSession.groups);
+      setCurrentGroup(updatedSession.currentGroup);
     } else {
       setCurrentGroup(finishedPlaceholder);
     }
