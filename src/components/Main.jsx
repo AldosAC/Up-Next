@@ -69,6 +69,12 @@ const Main = (props) => {
   };
 
   const clearGroups = () => {
+    const updatedSession = session;
+    updatedSession.groups = [];
+    updatedSession.currentGroup = null;
+    updatedSession.pendingGroups = [];
+
+    sendUpdate(updatedSession);
     setGroups([]);
     setCurrentGroup(null);
     setPendingGroups([]);
