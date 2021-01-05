@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import Session from "./Session.jsx";
+import Sessions from "./Sessions.jsx";
 import Main from "./Main.jsx";
 
 const App = (props) => {
   const [ session, setSession ] = useState(null);
   
-
   if (!session) {
     return (
       <div className="main-container">
         <div className="landing-page">
           <span className="text-welcome">Welcome!</span>
           <div className="landing-spacer"></div>
-          <Session setSession={setSession} />
+          <Sessions setSession={setSession} />
         </div>
       </div>
     )

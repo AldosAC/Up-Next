@@ -6,9 +6,9 @@ import Group from "../models/Group.js";
 const Main = (props) => {
   const { session } = props;
 
-  const [ groups, setGroups ] = useState([]);
-  const [ currentGroup, setCurrentGroup ] = useState(null);
-  const [ pendingGroups, setPendingGroups ] = useState(groups);
+  const [ groups, setGroups ] = useState(session.groups);
+  const [ currentGroup, setCurrentGroup ] = useState(session.currentGroup);
+  const [ pendingGroups, setPendingGroups ] = useState(session.pendingGroups);
 
   const addGroup = (input) => {
     let toBeAdded;
@@ -68,7 +68,7 @@ const Main = (props) => {
   return (
     <div className="main" >
       <div className="main-session-id">
-        Session ID: {session}
+        Session ID: {session.sessionId}
       </div>
       <div className="up-next-container">
         {checkCurrentGroup()}

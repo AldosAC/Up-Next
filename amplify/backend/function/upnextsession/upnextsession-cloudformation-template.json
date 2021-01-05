@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-upnext-prod-142329-deployment",
-          "S3Key": "amplify-builds/upnextsession-42753174564a55785042-build.zip"
+          "S3Key": "amplify-builds/upnextsession-6a484c312f4f382f6476-build.zip"
         }
       }
     },
