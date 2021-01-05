@@ -31,23 +31,28 @@ app.use(function(req, res, next) {
 app.get("/session/:id", (req, res) => {
   const { id } = req.params;
 
-  ddb.get().promise()
-    .then((results) => {
-      res.status(200).send(results);
+  const query = {
+    TableName: table,
+    Key: {
+      sessionId: id
+    }
+  }
+
+  ddb.get(query).promise()
+    .then(({ Item }) => {
+      res.status(200).send(Item);
     })
     .catch((err) => {
       console.log(`Error getting data for id ${id}: ${err}`);
       res.sendStatus(500);
-    })
-
-  res.sendStatus(400);
+    });
 });
 
 app.put("/session/:id", bodyParser.json(), (req, res) => {
   const { id } = req.params;
   const session = req.body;
 
-  let doc = {
+  const doc = {
     TableName: table,
     Item: session
   }
