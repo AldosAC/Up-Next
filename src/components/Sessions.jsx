@@ -19,10 +19,8 @@ const Sessions = (props) => {
   const onChangeHandler = ({ target }) => setInputValue(target.value);
   
   const submitSessionHandler = (event) => {
-    const id = inputValue.slice(0,4);
+    const id = inputValue.slice(0,4).toUpperCase();
     const url = `${apiUrl}/${id}/`;
-
-    console.log(`GET url: ${url}`);
 
     event.preventDefault();
 
@@ -31,7 +29,6 @@ const Sessions = (props) => {
       url
     })
       .then(({ data }) => {
-        console.log(`GET Succeed.  Data: ${data}`)
         if (!data) {
           setHasSession(false);
           setFailed(id);
