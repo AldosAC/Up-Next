@@ -7,20 +7,31 @@ div, input {
   margin: 0;
 }
 
+button {
+  border: 1px solid rgb(55, 66, 92);
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
 .main-container {
+  position: absolute;
   display: flex;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
+  padding: 10px;
 }
 
 /* Landing */
 .landing-page {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgba(34, 34, 34);
+  border: 2px solid rgb(55, 66, 92);
   border-radius: 6px;
   padding: 5px;
   width: 200px;
@@ -111,17 +122,17 @@ div, input {
 
 .main {
   display: flex;
+  position: relative;
   flex-direction: column;
-  position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
 .main-session-id {
   position: absolute;
-  border: 1px solid black;
+  border: 1px solid rgb(55, 66, 92);
   border-radius: 3px;
-  margin: 10px 10px 0 0;
+  margin: 0;
   padding: 3px;
   right: 0px;
   top: 0px;
@@ -177,7 +188,6 @@ div, input {
   left: 0px;
   bottom: 0px;
   height: 22px;
-  margin-left: 5px;
   margin-bottom: 3px;
 }
 
@@ -221,7 +231,6 @@ div, input {
   height: 100%;
   right: 0;
   bottom: 0;
-  margin-right: 3px;
   flex-shrink: 0;
 }
 
@@ -259,7 +268,7 @@ div, input {
   height: 100%;
   list-style-type: none;
   overflow: auto;
-  border: 2px solid black;
+  border: 2px solid rgb(55, 66, 92);
   border-radius: 5px;
 }
 
@@ -270,7 +279,7 @@ div, input {
   justify-content: center;
   margin: 0 5px 0 5px;
   flex-shrink: 0;
-  border: 1px solid black;
+  border: 1px solid rgb(55, 66, 92);
   border-radius: 3px;
   height: 50px;
   width: 100px;
