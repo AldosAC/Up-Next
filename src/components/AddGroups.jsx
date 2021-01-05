@@ -6,7 +6,7 @@ const AddGroups = (props) => {
   const [ input, setInput ] = useState("");
   const [ modal, setModal ] = useState(false);
 
-  const inputRef = useCallback((node) => node ? node.focus() : undefined);
+  const inputRef = useCallback((node) => node ? setTimeout(node.focus.bind(node), 100) : undefined);
 
   const onClickHandler = () => {
     if (!modal) {

@@ -284,6 +284,7 @@ button:active {
 }
 
 .input-generate-groups {
+  transition-duration: 0.1s;
   position: absolute;
   width: 100%;
   height: 22px;

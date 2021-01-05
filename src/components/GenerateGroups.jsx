@@ -6,7 +6,7 @@ const GenerateGroups = (props) => {
   const [ input, setInput ] = useState(0);
   const [ modal, setModal ] = useState(false);
 
-  const inputRef = useCallback((node) => node ? node.focus() : undefined);
+  const inputRef = useCallback((node) => node ? setTimeout(node.focus.bind(node), 100) : undefined);
 
   const getHighestCount = () => {
     let highestCount = 0;
