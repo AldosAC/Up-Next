@@ -25,7 +25,7 @@ button:focus {
 }
 
 button:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
   box-shadow:1px 0px 5px rgb(120, 128, 146);
 }
 
@@ -154,6 +154,8 @@ button:active {
   border-radius: 3px;
   margin: 0;
   padding: 3px;
+  width: 100%;
+  text-align: center;
   box-shadow:1px 2px 5px rgb(120, 128, 146);
 }
 
@@ -193,7 +195,6 @@ button:active {
   font-size: 18px;
   color: white;
   background-image: linear-gradient(to bottom right, rgb(60, 122, 255), rgb(28, 85, 208));
-
 }
 
 .btn-up-next:hover {
@@ -202,7 +203,7 @@ button:active {
 
 .btn-up-next:active {
   transform: translateX(-50%);
-  bottom: -2px;
+  bottom: -1px;
 }
 
 /* Groups */
@@ -259,6 +260,7 @@ button:active {
 }
 
 .input-add-group {
+  transition-duration: 0.1s;
   position: absolute;
   width: 100%;
   height: 22px;

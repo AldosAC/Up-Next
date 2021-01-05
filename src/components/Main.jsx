@@ -114,7 +114,7 @@ const Main = (props) => {
   return (
     <div className="main" >
       <div className="main-session-id">
-        <span className="session-id-text">Session ID: {session.sessionId}</span>
+        <div className="session-id-text">Session ID: {session.sessionId}</div>
         <div className="session-instruction-text">
           Save this!  Up Next will remember this session for 48 hours
         </div>
