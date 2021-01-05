@@ -41,20 +41,22 @@ const Main = (props) => {
   const addGroup = (input) => {
     let toBeAdded;
 
-    if (typeof input === "string") {
-      toBeAdded = [new Group(input)];
-    } else if (typeof input === "object") {
-      toBeAdded = input.map((item) => new Group(item));
+    if (groups.length < 30) {
+      if (typeof input === "string") {
+        toBeAdded = [new Group(input)];
+      } else if (typeof input === "object") {
+        toBeAdded = input.map((item) => new Group(item));
+      }
+  
+      const updatedSession = session;
+      updatedSession.groups = [...groups, ...toBeAdded];
+      updatedSession.pendingGroups = [...pendingGroups, ...toBeAdded];
+      updatedSession.currentGroup = currentGroup;
+  
+      sendUpdate(updatedSession);
+      setPendingGroups(updatedSession.pendingGroups);
+      setGroups(updatedSession.groups);
     }
-
-    const updatedSession = session;
-    updatedSession.groups = [...groups, ...toBeAdded];
-    updatedSession.pendingGroups = [...pendingGroups, ...toBeAdded];
-    updatedSession.currentGroup = currentGroup;
-
-    sendUpdate(updatedSession);
-    setPendingGroups(updatedSession.pendingGroups);
-    setGroups(updatedSession.groups);
   };
 
   const deleteGroup = (index) => {
