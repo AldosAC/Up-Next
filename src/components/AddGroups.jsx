@@ -20,9 +20,20 @@ const AddGroups = (props) => {
     }
   }
 
+  const onEnterHandler = () => {
+    if (!modal) {
+      setModal(true);
+    } else if (modal && input === "") {
+      setModal(false);
+    } else {
+      addGroup(input);
+      setInput("");
+    }
+  }
+
   const inputChangeHandler = ({ target: { value }}) => setInput(value);
 
-  const keyPressHandler = ({ key }) => key === "Enter" ? onClickHandler() : undefined;
+  const keyPressHandler = ({ key }) => key === "Enter" ? onEnterHandler() : undefined;
 
   if (!modal) {
     return (
