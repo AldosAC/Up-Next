@@ -114,7 +114,10 @@ const Main = (props) => {
   return (
     <div className="main" >
       <div className="main-session-id">
-        Session ID: {session.sessionId}
+        <span className="session-id-text">Session ID: {session.sessionId}</span>
+        <div className="session-instruction-text">
+          Save this!  Up Next will remember this session for 48 hours
+        </div>
       </div>
       <div className="up-next-container">
         {checkCurrentGroup()}

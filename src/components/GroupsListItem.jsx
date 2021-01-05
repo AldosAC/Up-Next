@@ -5,11 +5,12 @@ const GroupsListItem = (props) => {
 
   const deleteHandler = () => deleteGroup(index);
 
-  const classes = hasGone ? "groups-list-item group-has-gone" : "groups-list-item";
+  const itemClasses = hasGone ? "groups-list-item group-has-gone" : "groups-list-item";
+  const buttonClasses = hasGone ? "btn-delete-item btn-group-has-gone" : "btn-delete-item";
 
   return (
-    <li className={classes} >
-      <button className="btn-delete-item" onClick={deleteHandler} >X</button>
+    <li className={itemClasses} >
+      <button className={buttonClasses} onClick={deleteHandler} >X</button>
       {group.name}
     </li>
   )
