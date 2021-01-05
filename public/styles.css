@@ -346,6 +346,10 @@ button:active {
   box-shadow:1px 2px 5px rgb(120, 128, 146);
 }
 
+.group-list-item-text {
+  text-align: center;
+}
+
 .group-has-gone {
   background-color: rgb(65, 72, 87);
 }

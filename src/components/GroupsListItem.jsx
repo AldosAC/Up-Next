@@ -11,7 +11,7 @@ const GroupsListItem = (props) => {
   return (
     <li className={itemClasses} >
       <button className={buttonClasses} onClick={deleteHandler} >X</button>
-      {group.name}
+      <span className="group-list-item-text">{group.name}</span>
     </li>
   )
 }
