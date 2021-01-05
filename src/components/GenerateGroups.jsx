@@ -46,7 +46,7 @@ const GenerateGroups = (props) => {
     }
   }
 
-  const inputChangeHandler = ({ target: { value }}) => setInput(value);
+  const inputChangeHandler = ({ target: { value }}) => setInput(value >= 30 ? 30 : value);
 
   const keyPressHandler = ({ key }) => key === "Enter" ? onClickHandler() : undefined;
 
