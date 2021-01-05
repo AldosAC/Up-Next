@@ -44,7 +44,7 @@ app.get("/session/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(`Error getting data for id ${id}: ${err}`);
-      res.sendStatus(500);
+      res.status(500).send(err);
     });
 });
 
@@ -60,7 +60,7 @@ app.put("/session/:id", bodyParser.json(), (req, res) => {
   ddb.put(doc, (err, results) => {
     if (err) {
       console.log(`Unable to update database: ${err}`);
-      res.sendStatus(500);
+      res.status(500).send(err);
     } else {
       console.log(`Successfully updated database.`)
       res.sendStatus(201);
