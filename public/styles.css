@@ -99,6 +99,7 @@ button:active {
   box-sizing: border-box;
   margin: 0;
   margin-bottom: 5px;
+  height: 22px;
   width: 100%;
 }
 
@@ -106,7 +107,14 @@ button:active {
   box-sizing: border-box;
   margin: 0;
   margin-bottom: 5px;
-  width: 186px;
+  height: 22px;
+  width: 100%;
+  color: white;
+  background-image: linear-gradient(to bottom right, rgb(60, 122, 255), rgb(28, 85, 208));
+}
+
+.btn-new-session:hover {
+  background-image:linear-gradient(to bottom right, rgb(107, 154, 254), rgb(74, 116, 205));
 }
 
 .text-enter-session {
@@ -122,14 +130,21 @@ button:active {
   box-sizing: border-box;
   margin: 0;
   margin-bottom: 5px;
-  width: 186px;
+  width: 100%;
 }
 
 .btn-submit-session {
   box-sizing: border-box;
   margin: 0;
   margin-bottom: 5px;
-  width: 186px;
+  height: 22px;
+  width: 100%;
+  color: white;
+  background-image: linear-gradient(to bottom right, rgb(60, 122, 255), rgb(28, 85, 208));
+}
+
+.btn-submit-session:hover {
+  background-image:linear-gradient(to bottom right, rgb(107, 154, 254), rgb(74, 116, 205));
 }
 
 /* Main View */
@@ -320,8 +335,8 @@ button:active {
 .groups-list-item {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin: 0 5px 0 5px;
   flex-shrink: 0;
   border: 1px solid rgb(55, 66, 92);
@@ -329,6 +344,10 @@ button:active {
   height: 50px;
   width: 100px;
   box-shadow:1px 2px 5px rgb(120, 128, 146);
+}
+
+.group-list-item-text {
+  text-align: center;
 }
 
 .group-has-gone {
