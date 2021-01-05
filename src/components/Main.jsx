@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Groups from "./Groups.jsx";
 import CurrentGroup from "./CurrentGroup.jsx";
 import Group from "../models/Group.js";
+import debounce from "lodash.debounce";
+import config from "../config.json";
+import axios from "axios";
 
 const Main = (props) => {
   const { session } = props;
@@ -9,6 +12,17 @@ const Main = (props) => {
   const [ groups, setGroups ] = useState(session.groups);
   const [ currentGroup, setCurrentGroup ] = useState(session.currentGroup);
   const [ pendingGroups, setPendingGroups ] = useState(session.pendingGroups);
+
+  const sendUpdate = debounce((session) => {
+    const url = `${config.apiUrl}/${session.sessionId}/`;
+
+    axios({
+      method: "put",
+      url,
+      data: session
+    })
+      .catch((err) => console.log(`Unable to update back-end: ${err}`));
+  }, 4000);
 
   const addGroup = (input) => {
     let toBeAdded;
@@ -19,22 +33,39 @@ const Main = (props) => {
       toBeAdded = input.map((item) => new Group(item));
     }
 
-    setPendingGroups([...pendingGroups, ...toBeAdded]);
-    setGroups([...groups, ...toBeAdded]);
+    const updatedSession = session;
+    updatedSession.groups = [...groups, ...toBeAdded];
+    updatedSession.pendingGroups = [...pendingGroups, ...toBeAdded];
+    updatedSession.currentGroup = currentGroup;
+
+    sendUpdate(updatedSession);
+    setPendingGroups(updatedSession.pendingGroups);
+    setGroups(updatedSession.groups);
   };
 
   const deleteGroup = (index) => {
-    let newGroups = [...groups];
-    let newPendingGroups = [...pendingGroups]
-    const [ removedGroup ] = newGroups.splice(index, 1);
-    const pendingIndex = pendingGroups.indexOf(removedGroup);
+    const updatedSession = session;
+    updatedSession.groups = [...groups];
+    updatedSession.pendingGroups = [...pendingGroups];
+    updatedSession.currentGroup = currentGroup;
+    const [ removedGroup ] = updatedSession.groups.splice(index, 1);
+    const pendingIndex = updatedSession.pendingGroups.reduce((acc, { name }, index) => {
+      if (acc !== -1) {
+        return acc;
+      } else if (name === removedGroup.name) {
+        return index;
+      } else {
+        return -1;
+      }
+    }, -1);
 
     if (pendingIndex >= 0) {
-      newPendingGroups.splice(pendingIndex, 1);
+      updatedSession.pendingGroups.splice(pendingIndex, 1);
     }
     
-    setGroups(newGroups);
-    setPendingGroups(newPendingGroups);
+    sendUpdate(updatedSession);
+    setGroups(updatedSession.groups);
+    setPendingGroups(updatedSession.pendingGroups);
   };
 
   const clearGroups = () => {

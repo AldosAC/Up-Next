@@ -22,6 +22,7 @@
   "homepage": "https://github.com/AldosAC/Up-Next#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "lodash.debounce": "^4.0.8",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "sha256": "^0.2.0"
