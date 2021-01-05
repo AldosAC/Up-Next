@@ -16,7 +16,7 @@ button {
 }
 
 button:hover {
-  background-color: lightgray;
+  background-color: rgb(211, 217, 231);
 }
 
 button:focus {
@@ -191,6 +191,13 @@ button:active {
   height: 50px;
   width: 100px;
   font-size: 18px;
+  color: white;
+  background-image: linear-gradient(to bottom right, rgb(60, 122, 255), rgb(28, 85, 208));
+
+}
+
+.btn-up-next:hover {
+  background-image:linear-gradient(to bottom right, rgb(107, 154, 254), rgb(74, 116, 205));
 }
 
 .btn-up-next:active {
@@ -304,6 +311,7 @@ button:active {
   border: 2px solid rgb(55, 66, 92);
   border-radius: 5px;
   box-shadow:1px 2px 5px rgb(120, 128, 146);
+  background-image: linear-gradient(to bottom right, white, rgb(155, 159, 169))
 }
 
 .groups-list-item {
