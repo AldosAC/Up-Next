@@ -31,7 +31,7 @@ const AddGroups = (props) => {
     }
   }
 
-  const inputChangeHandler = ({ target: { value }}) => setInput(value);
+  const inputChangeHandler = ({ target: { value }}) => setInput(value.slice(0, 24));
 
   const keyPressHandler = ({ key }) => key === "Enter" ? onEnterHandler() : undefined;
 
