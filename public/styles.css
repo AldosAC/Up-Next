@@ -432,6 +432,10 @@ button:active {
   background-image: linear-gradient(to bottom right, rgb(60, 122, 255), rgb(28, 85, 208));
 }
 
+.btn-toggle-item:hover {
+  background-image:linear-gradient(to bottom right, rgb(107, 154, 254), rgb(74, 116, 205));
+}
+
 .btn-toggle-has-gone {
   border: 1px solid black;
   background-image: none;
