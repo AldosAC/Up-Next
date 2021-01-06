@@ -338,6 +338,7 @@ button:active {
   position: relative;
   list-style-type: none;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
 
 .groups-list-item {
@@ -345,7 +346,7 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5px 0 5px;
+  margin: 0 5px 2px 5px;
   flex-shrink: 0;
   border: 1px solid rgb(55, 66, 92);
   border-radius: 3px;
