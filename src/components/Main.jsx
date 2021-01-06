@@ -76,6 +76,19 @@ const Main = (props) => {
     setPendingGroups(updatedSession.pendingGroups);
   };
 
+  const resetGroups = () => {
+    session.groups = groups;
+
+    session.groups.forEach((item) => item.hasGone = false);
+    session.currentGroup = null;
+    session.pendingGroups = session.groups;
+
+    sendUpdate(session);
+    setGroups(session.groups);
+    setCurrentGroup(null);
+    setPendingGroups(session.pendingGroups);
+  }
+
   const clearGroups = () => {
     const updatedSession = session;
     updatedSession.groups = [];
@@ -132,6 +145,7 @@ const Main = (props) => {
         addGroup={addGroup}
         deleteGroup={deleteGroup}
         clearGroups={clearGroups}
+        resetGroups={resetGroups}
       />
     </div>
   );
