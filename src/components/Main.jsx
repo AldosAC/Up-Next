@@ -144,8 +144,6 @@ const Main = (props) => {
       operation = 'rename';
     }
 
-    console.log(`Operation: ${operation}`);
-
     const pendingIndex = indexOf(pendingGroups, group);
 
     if (operation === 'toggle') {
