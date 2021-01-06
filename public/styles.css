@@ -262,6 +262,7 @@ button:active {
 .add-generate-container {
   position: absolute;
   display: flex;
+  flex-direction: row;
   margin-bottom: 3px;
   width: 243px;
   height: 50px;
@@ -270,52 +271,49 @@ button:active {
 }
 
 .add-group-container {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 120px;
   height: 100%;
-  left: 0;
-  bottom: 0;
   flex-shrink: 0;
   margin-right: 3px;
 }
 
 .btn-add-group {
-  position: absolute;
   height: 22px;
   width: 100%;
-  bottom: 0;
 }
 
 .input-add-group {
   transition-duration: 0.1s;
-  position: absolute;
+  transform: translateY(1px);
   width: 100%;
   height: 22px;
   bottom: 21px;
 }
 
 .generate-groups-container {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 120px;
   height: 100%;
-  right: 0;
-  bottom: 0;
   flex-shrink: 0;
 }
 
 .btn-generate-groups {
-  position: absolute;
   width: 100%;
   height: 22px;
-  bottom: 0;
 }
 
 .input-generate-groups {
   transition-duration: 0.1s;
-  position: absolute;
+  transform: translateY(1px);
   width: 100%;
   height: 22px;
-  bottom: 21px;
 }
 
 .input-hidden {
