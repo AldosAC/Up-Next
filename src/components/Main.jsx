@@ -36,12 +36,22 @@ const Main = (props) => {
         return -1;
       }
     }, -1);
-  }
+  };
+
+  const isUnique = (name) => {
+    return groups.reduce((prev, curr) => {
+      if (curr.name === name) {
+        return false;
+      } else {
+        return prev;
+      }
+    }, true);
+  };
 
   const addGroup = (input) => {
     let toBeAdded;
 
-    if (groups.length < 30) {
+    if (groups.length < 30 && isUnique(input)) {
       if (typeof input === "string") {
         toBeAdded = [new Group(input)];
       } else if (typeof input === "object") {
@@ -122,25 +132,42 @@ const Main = (props) => {
     }
   };
 
-  const updateGroup = (group) => {
+  const updateGroup = (group, newGroup) => {
     session.groups = [...groups]
     session.pendingGroups = [...pendingGroups];
-    session.groups[indexOf(groups, group)] = group;
+
+    let operation;
+
+    if (group.name === newGroup.name && group.hasGone !== newGroup.hasGone) {
+      operation = 'toggle';
+    } else if (group.name !== newGroup.name && group.hasGone === newGroup.hasGone) {
+      operation = 'rename';
+    }
+
+    console.log(`Operation: ${operation}`);
 
     const pendingIndex = indexOf(pendingGroups, group);
 
-    if (pendingIndex >= 0) {
-      session.pendingGroups.splice(pendingIndex, 1);
-    } else {
-      session.pendingGroups.push(group);
+    if (operation === 'toggle') {
+      session.groups[indexOf(groups, group)] = newGroup;
+      if (pendingIndex >= 0) {
+        session.pendingGroups.splice(pendingIndex, 1);
+      } else {
+        session.pendingGroups.push(newGroup);
+      }
+    } else if (operation === 'rename' && isUnique(group.name)) {
+      console.log(`Rename triggered`);
+      session.groups[indexOf(groups, group)] = newGroup;
+      session.pendingGroups[pendingIndex] = newGroup;
+      if (currentGroup !== null && currentGroup.name === group.name) {
+        session.currentGroup = newGroup;
+        setCurrentGroup(newGroup);
+      }
     }
 
     sendUpdate(session);
     setGroups(session.groups);
     setPendingGroups(session.pendingGroups);
-    if (currentGroup.name === group.name) {
-      setCurrentGroup(group);
-    }
   }
 
   const checkCurrentGroup = () => (
