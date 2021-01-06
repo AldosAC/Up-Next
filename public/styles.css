@@ -357,12 +357,30 @@ button:active {
   justify-content: center;
   align-items: center;
   margin: 0 5px 2px 5px;
+  padding: 2px;
   flex-shrink: 0;
   border: 1px solid rgb(55, 66, 92);
   border-radius: 3px;
   height: 50px;
   width: 100px;
   box-shadow:1px 2px 5px rgb(120, 128, 146);
+}
+
+.group-item-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%
+}
+
+.groups-item-input {
+  flex-shrink: 0;
+  display: none;
+  width: 100%;
+}
+
+.groups-item-input-visible {
+  display: block;
 }
 
 .group-list-item-text {
@@ -419,4 +437,8 @@ button:active {
   background-image: none;
   background-color: white;
   box-shadow: none;
+}
+
+.hidden {
+  display: none;
 }
