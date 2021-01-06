@@ -10,7 +10,8 @@ const Groups = (props) => {
     addGroup,
     deleteGroup,
     clearGroups,
-    resetGroups
+    resetGroups,
+    updateGroup
   } = props;
 
   return (
@@ -28,7 +29,11 @@ const Groups = (props) => {
           />
         </div>
       </div>
-      <GroupsList groups={groups} deleteGroup={deleteGroup} />
+      <GroupsList
+        groups={groups}
+        deleteGroup={deleteGroup}
+        updateGroup={updateGroup}
+        />
     </div>
   )
 }

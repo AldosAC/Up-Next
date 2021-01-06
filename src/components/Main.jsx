@@ -122,6 +122,27 @@ const Main = (props) => {
     }
   };
 
+  const updateGroup = (group) => {
+    session.groups = [...groups]
+    session.pendingGroups = [...pendingGroups];
+    session.groups[indexOf(groups, group)] = group;
+
+    const pendingIndex = indexOf(pendingGroups, group);
+
+    if (pendingIndex >= 0) {
+      session.pendingGroups.splice(pendingIndex, 1);
+    } else {
+      session.pendingGroups.push(group);
+    }
+
+    sendUpdate(session);
+    setGroups(session.groups);
+    setPendingGroups(session.pendingGroups);
+    if (currentGroup.name === group.name) {
+      setCurrentGroup(group);
+    }
+  }
+
   const checkCurrentGroup = () => (
     currentGroup ? <CurrentGroup group={currentGroup} /> : null
   );
@@ -146,6 +167,7 @@ const Main = (props) => {
         deleteGroup={deleteGroup}
         clearGroups={clearGroups}
         resetGroups={resetGroups}
+        updateGroup={updateGroup}
       />
     </div>
   );
