@@ -153,8 +153,7 @@ const Main = (props) => {
       } else {
         session.pendingGroups.push(newGroup);
       }
-    } else if (operation === 'rename' && isUnique(group.name)) {
-      console.log(`Rename triggered`);
+    } else if (operation === 'rename' && isUnique(newGroup.name)) {
       session.groups[indexOf(groups, group)] = newGroup;
       session.pendingGroups[pendingIndex] = newGroup;
       if (currentGroup !== null && currentGroup.name === group.name) {
