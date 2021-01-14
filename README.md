@@ -4,7 +4,7 @@ Up Next is live!  Check it out here: [upnext.joelcarpenter.net](http://upnext.jo
 
 Up Next is your solution to that eternal question... who's up next?  Create a list of participants and Up Next will randomly draw a name from the list, dynamically updating the list to track who's gone and who hasn't.
 
-Up Next was built as a utility during my time at Hack Reactor.  One day, during a series of student presentations, it occurred to me that there had to be a better way to randomly draw a name than just trying to use Siri to generate a random number.  The more I thought about it, the more I realized this was a utility I could build for my co-workers and I to use that would make our lives just a little bit easier.  Thus Up Next was born!
+Up Next was built as a utility during my time at Hack Reactor.  One day, during a series of student presentations, it occurred to me that there had to be a better way to randomly draw a name than just trying to use Siri to generate a random number.  The more I thought about it, the more I realized this was a utility I could build for my team to use that would make our lives just a little bit easier.  Thus Up Next was born!
 
 ## Features
 
